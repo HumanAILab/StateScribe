@@ -81,8 +81,7 @@ Evaluate a baseline run the same way, but point `--benchmark-output` to the corr
 
 ## Run with an iPhone
 
-The iPhone capture backend is available at [StateScribe iPhone Backend](https://placeholder.example.com/statescribe-iphone-backend).
-You need an iPhone model with a LiDAR sensor.
+The iPhone capture client is included in [`iphone-client/`](iphone-client/). See the [iPhone client setup guide](iphone-client/README.md) for Xcode, signing, Firebase, API-key, and device setup. You need an iPhone model with a LiDAR sensor.
 
 To run the live system:
 

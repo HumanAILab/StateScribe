@@ -1,0 +1,9 @@
+// Shared, non-secret build settings.
+PRODUCT_BUNDLE_IDENTIFIER = org.example.StateScribe
+DEVELOPMENT_TEAM =
+GEMINI_API_KEY =
+FRAME_SENDER_HOST = 192.168.1.2
+FRAME_SENDER_PORT = 1234
+
+// Local settings override the defaults above. Create this file from the example.
+#include? "Local.xcconfig"

@@ -1,0 +1,8 @@
+// Copy this file to Local.xcconfig and replace the placeholder values.
+// Do not commit Local.xcconfig.
+
+PRODUCT_BUNDLE_IDENTIFIER = com.your-organization.StateScribe
+DEVELOPMENT_TEAM = YOUR_TEAM_ID
+GEMINI_API_KEY = YOUR_GEMINI_API_KEY
+FRAME_SENDER_HOST = 192.168.1.2
+FRAME_SENDER_PORT = 1234
