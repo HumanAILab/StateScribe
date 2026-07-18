@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StateScribe Web Visualizer</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>StateScribe Web Visualizer</h1>
+      <p id="statusLine">Waiting for live data...</p>
+    </div>
+    <div class="chips">
+      <span class="chip" id="metaRealtime">Realtime 0</span>
+      <span class="chip" id="metaChange">Changes 0</span>
+      <span class="chip" id="metaObjects">Objects 0</span>
+      <span class="chip" id="metaSpeech">Speech 0</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Realtime RGB / Depth / Confidence / Describing</h2>
+        <div class="history-nav">
+          <button id="rtPrev">Prev</button>
+          <input id="rtSlider" type="range" min="0" max="0" value="0" />
+          <button id="rtNext">Next</button>
+          <span id="rtIndex">0 / 0</span>
+        </div>
+      </div>
+      <div class="image-grid image-grid-4">
+        <article class="image-card">
+          <h3>RGB</h3>
+          <img id="rtRgb" alt="Realtime RGB" />
+        </article>
+        <article class="image-card">
+          <h3>Depth</h3>
+          <img id="rtDepth" alt="Realtime Depth" />
+        </article>
+        <article class="image-card">
+          <h3>Confidence</h3>
+          <img id="rtConf" alt="Realtime Confidence" />
+        </article>
+        <article class="image-card">
+          <h3>Describing Image</h3>
+          <img id="rtDescribe" alt="Live describing frame" />
+        </article>
+      </div>
+      <p class="caption" id="rtTimestamp"></p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Speech Timeline</h2>
+      </div>
+      <div class="scroll-area" id="speechTimeline"></div>
+    </section>
+
+    <section class="panel panel-wide">
+      <div class="panel-head">
+        <h2>Change Detection (6 Views)</h2>
+        <div class="history-nav">
+          <button id="chPrev">Prev</button>
+          <input id="chSlider" type="range" min="0" max="0" value="0" />
+          <button id="chNext">Next</button>
+          <span id="chIndex">0 / 0</span>
+        </div>
+      </div>
+      <div class="image-strip" id="changeStrip">
+        <article class="image-card">
+          <h3>Current Frame (t1)</h3>
+          <img id="chCurrent" alt="Current frame" />
+        </article>
+        <article class="image-card">
+          <h3>Reference Frame (t0)</h3>
+          <img id="chReference" alt="Reference frame" />
+        </article>
+        <article class="image-card">
+          <h3>Current Gemini</h3>
+          <img id="chGeminiCurrent" alt="Current Gemini" />
+        </article>
+        <article class="image-card">
+          <h3>Reference Gemini</h3>
+          <img id="chGeminiRef" alt="Reference Gemini" />
+        </article>
+        <article class="image-card">
+          <h3>Current FastSAM Mask</h3>
+          <img id="chMaskCurrent" alt="Current mask" />
+        </article>
+        <article class="image-card">
+          <h3>Reference FastSAM Mask</h3>
+          <img id="chMaskRef" alt="Reference mask" />
+        </article>
+      </div>
+      <p class="caption" id="chCaption"></p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>3D Mesh + Bounding Boxes</h2>
+      </div>
+      <div id="meshCanvas"></div>
+      <p class="caption" id="meshCaption">No mesh yet.</p>
+    </section>
+
+    <section class="panel panel-wide memory-panel">
+      <div class="panel-head">
+        <h2>Change Memory</h2>
+      </div>
+      <div class="memory-layout">
+        <div class="scroll-area memory-list" id="memoryList"></div>
+        <div class="scroll-area memory-detail" id="memoryDetail"></div>
+      </div>
+    </section>
+
+    <section class="panel panel-wide">
+      <div class="panel-head">
+        <h2>Structured Logs</h2>
+        <div class="log-tabs">
+          <button class="active" data-log-kind="frame">Frames</button>
+          <button data-log-kind="speech">Speech</button>
+          <button data-log-kind="app">App</button>
+        </div>
+      </div>
+      <div class="scroll-area logs-area" id="logsArea"></div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
