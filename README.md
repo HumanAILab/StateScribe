@@ -14,7 +14,7 @@ pip install -r requirements.txt
 
 ## Benchmark on a Dataset
 
-Download the dataset from [StateScribe Dataset](https://placeholder.example.com/statescribe-dataset), then extract it so each scene directory looks like this:
+Download the dataset from [StateScribe Dataset](https://huggingface.co/datasets/human-ai-lab/StateScribe), then extract it so each scene directory looks like this:
 
 ```text
 /path/to/statescribe-dataset/
